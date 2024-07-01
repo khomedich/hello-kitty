@@ -1,13 +1,14 @@
-import React from 'react' 
+import React, { useState } from 'react'
+import Switch from '@mui/material/Switch'
 
 
 const oleksaBanner = 
-"  ____  _      _\n" +
-" / __ \\| |    | |\n" +
-"| |  | | | ___| | _____  __ _\n" + 
-"| |  | | |/ _ \\ |/ / __|/ _` |\n" +
-"| |__| | |  __/   <\\__ \\ (_| |\n" +
-" \\____/|_|\\___|_|\\_\\___/\\__,_|\n" +
+"  ____  _\n" +
+" / __ \\| |\n" +
+"| |  | | | ___ __  __ __ _\n" + 
+"| |  | | |/ _ \\  \\/  / _` |\n" +
+"| |__| | |  __/ >  <  (_| |\n" +
+" \\____/|_|\\___/__/\\__\\__,_|\n" +
 "\n"
 
 const homenkoBanner = 
@@ -21,14 +22,33 @@ const homenkoBanner =
 
 const hiThere = "Hi, ..."
 
+const prompt = ">"
+
 function App() {
+  const [checked, setChecked] = useState(false)
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  }
+
   return (
     <div className="app bg-base-400">
-      <div className="flex flex-wrap">
-        <pre className="overflow-auto">{oleksaBanner}</pre>
+      {/* <Switch
+      checked={checked}
+      onChange={handleChange}
+      inputProps={{ 'aria-label': 'controlled' }}
+    /> */}
+      <div className="flex flex-wrap text-green-500 font-bold">
+        <pre className="overflow-auto test-left">{oleksaBanner}</pre>
         <pre className="overflow-auto">{homenkoBanner}</pre>
       </div>
-      <div className="ml-1">{hiThere}</div>
+      <div className="text-green-500 font-bold">
+      </div>
+      <div className="ml-1 text-green-500">{hiThere}</div>
+      <span className="w-1/12">{prompt}</span>{" "}
+      <input className="mt-4 bg-transparent text-green-500 outline-none w-11/12"
+        type="text"
+      ></input>
     </div>
   )
 }
